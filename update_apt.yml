@@ -1,0 +1,26 @@
+---
+- hosts: webservers
+  tasks:
+        - name: Update APT Cache
+          become: true
+          apt:
+                  update_cache: yes
+          register: find_output
+        - debug:
+                var: find_output
+          until: find_output is not failed
+          retries: 5
+          delay: 10
+
+
+        - name: Upgraed installed packages
+          become: true
+          apt:
+                upgrade: dist
+          register: find_output
+        - debug:
+                var: find_output
+          until: find_output is not failed
+          retries: 5
+          delay: 10
+

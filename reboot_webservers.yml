@@ -1,0 +1,8 @@
+---
+- hosts: webservers
+  tasks:
+    - name: reboot host
+      shell: /sbin/reboot
+      become: true
+
+
